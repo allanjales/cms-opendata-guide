@@ -10,10 +10,12 @@ repo_url: 'https://github.com/cernopendata/cms-opendata-guide'
 # Structure
 nav:
     - Home: index.md
+    - 'CMS Open Data':
+        - 'CERN Open Data Portal': cmsOpenData/cernportal.md
+        - 'CMS Open Data': cmsOpenData/cmsopendata.md
+        - 'Finding Data': cmsOpenData/findingData.md
+        - 'Workshops': cmsOpenData/workshops.md
     - 'Computing Tools':
-        - 'CERN Open Data Portal': tools/cernportal.md
-        - 'CMS Open Data': tools/cmsopendata.md
-        - 'CMS Twiki': tools/cmstwiki.md
         - 'UNIX': tools/unix.md
         - 'ROOT': tools/root.md
         - 'C++ and Python': tools/cppandpython.md
@@ -32,21 +34,21 @@ nav:
             - 'MC Simulations': analysis/datasim/mcsimulations.md
             - 'Event Generation': analysis/datasim/eventgeneration.md
         - 'Selection':
+            - 'Validated Runs': analysis/selection/validatedRuns.md
             - 'Triggers': analysis/selection/triggers.md
-            - 'Physics Objects': analysis/selection/objects.md
-            - 'Specific Physics Objects':
+            - 'Physics Objects':
+                - 'Physics Objects': analysis/selection/objects/objects.md
                 - 'Common Tools': analysis/selection/objects/tools.md
                 - 'Muons': analysis/selection/objects/muons.md
-                - 'Electrons and Photons': analysis/selection/objects/egamma.md
+                - 'Electrons': analysis/selection/objects/electrons.md
+                - 'Photons': analysis/selection/objects/photons.md
                 - 'Jets': analysis/selection/objects/jets.md
                 - 'Missing ET': analysis/selection/objects/met.md
-            - 'Physics Object ID': analysis/selection/objectid.md
+                - 'Taus': analysis/selection/objects/taus.md
             - 'ID Efficiency study':
                 - 'Tag and Probe': analysis/selection/idefficiencystudy/tagandprobe.md
                 - 'Signal extraction': analysis/selection/idefficiencystudy/signalextraction.md
                 - 'Tutorial':
-                    - 'Introduction':            analysis/selection/idefficiencystudy/tutorial/01-introduction.md
-                    - 'Fitting':                 analysis/selection/idefficiencystudy/tutorial/02-fitting.md
                     - 'Sideband Subtraction':    analysis/selection/idefficiencystudy/tutorial/03-sidebandsubtraction.md
                     - 'Comparison':              analysis/selection/idefficiencystudy/tutorial/04-comparison.md
                     - 'Systematic':              analysis/selection/idefficiencystudy/tutorial/05-systematic.md
@@ -63,12 +65,8 @@ nav:
                 - 'Reference Guide (Fit)':
                     - 'Overview':                  analysis/selection/idefficiencystudy/fittingreferenceguide/overview.md
                     - 'Src files':                 analysis/selection/idefficiencystudy/fittingreferenceguide/src_files.md
-        - 'Luminosity':
-            - 'Luminosity': analysis/luminosity/lumi.md
-        - 'Backgrounds':
-            - 'Techniques': analysis/backgrounds/techniques.md
-            - 'QCD Estimation': analysis/backgrounds/qcdestimation.md
-
+        - 'Luminosity': analysis/lumi.md
+        - 'Background Modelling': analysis/backgrounds.md
         - 'Systematics':
             - 'Luminosity Uncertainties': analysis/systematics/lumiuncertain.md
             - 'MC Uncertainty': analysis/systematics/mcuncertain.md
@@ -77,9 +75,7 @@ nav:
                  - 'Jet/MET uncertainties': analysis/systematics/objectsuncertain/jetmetuncertain.md
                  - 'Tagging uncertainties': analysis/systematics/objectsuncertain/btaguncertain.md
             - 'Pileup Uncertainty': analysis/systematics/pileupuncertain.md
-        - 'Interpretation':
-            - 'Statistics': analysis/interpretation/stats.md
-            - 'Upper-limit Calculations': analysis/interpretation/limits.md
+        - 'Statistical Interpretation': analysis/stats.md  
     - FAQ: faq.md
     - About: about.md
 
@@ -94,13 +90,18 @@ theme:
       text: 'Lato'
     icon:
       repo: 'fontawesome/brands/github'
-    logo: 'images/cmslogo.png'
-    favicon: 'images/favicon.ico'
+    logo: 'images/cms-od.png'
+    favicon: 'images/cms-od.png'
 
 # Customization
 extra_css:
   - stylesheets/extra.css
 
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+  
 # Extensions
 markdown_extensions:
     - admonition
@@ -113,7 +114,9 @@ markdown_extensions:
     - pymdownx.superfences
     - pymdownx.tabbed:
         alternate_style: true
-
+    - pymdownx.arithmatex:
+        generic: true
+      
 # Plugins
 plugins:
   - search
